@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Analysis Report</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
+</head>
+<body class="bg-gray-50">
+    <nav class="bg-white border-b border-gray-200">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <span class="self-center text-2xl font-semibold">Network Analysis Dashboard</span>
+            <div class="flex md:order-2">
+                <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-4 py-2">Download Report</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto px-4 py-8">
+        <div class="grid gap-6 mb-8 md:grid-cols-2">
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-xl font-bold mb-4">Traffic Overview</h3>
+                <div id="overview">Loading...</div>
+            </div>
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-xl font-bold mb-4">Suspicious Activities</h3>
+                <div id="suspicious">Loading...</div>
+            </div>
+        </div>
+
+        <div class="grid gap-6 mb-8 md:grid-cols-2">
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-xl font-bold mb-4">Traffic Distribution</h3>
+                <img src="traffic_analysis.png" alt="Traffic Analysis" class="w-full"/>
+            </div>
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-xl font-bold mb-4">Port Analysis</h3>
+                <div id="ports">Loading...</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+    <script>
+        async function loadReport() {
+            try {
+                const response = await fetch('network_analysis.md');
+                const text = await response.text();
+                const html = marked.parse(text);
+                
+                document.getElementById('overview').innerHTML = html;
+                document.getElementById('suspicious').innerHTML = html;
+                document.getElementById('ports').innerHTML = html;
+            } catch (error) {
+                console.error('Error loading report:', error);
+            }
+        }
+
+        loadReport();
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+</body>
+</html>
