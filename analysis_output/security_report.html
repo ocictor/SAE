@@ -1,0 +1,87 @@
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Network Security Analysis</title>
+            <style>
+                body { 
+                    font-family: 'Arial', sans-serif;
+                    background: linear-gradient(135deg, #1a237e, #311b92);
+                    color: #ffffff;
+                    margin: 0;
+                    padding: 3rem;
+                }
+                h1, h2, h3 { 
+                    color: #ffd700;
+                    font-weight: 800;
+                    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+                }
+                .alert { 
+                    background: rgba(255,255,255,0.1);
+                    backdrop-filter: blur(10px);
+                    border-radius: 15px;
+                    margin: 2rem 0;
+                    padding: 2.5rem;
+                    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+                }
+                .threat-level { 
+                    color: #ff4081;
+                    font-size: 1.2em;
+                    letter-spacing: 2px;
+                }
+                .metrics { 
+                    background: rgba(0,0,0,0.2);
+                    padding: 1.5rem;
+                    border-radius: 10px;
+                    border: 1px solid rgba(255,255,255,0.2);
+                    margin-top: 1rem;
+                }
+                #charts {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                    gap: 2rem;
+                    margin: 3rem 0;
+                }
+                img {
+                    width: 100%;
+                    border-radius: 12px;
+                    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+                    transition: transform 0.3s ease;
+                }
+                img:hover {
+                    transform: scale(1.02);
+                }
+            </style>
+        </head>
+        <body>
+            <h1>Security Analysis Report</h1>
+            <p>Generated: 2025-01-24 08:43:37</p>
+
+            <div id="charts">
+                <div>
+                    <h3>TCP Flags Analysis</h3>
+                    <img src="flag_analysis.png" alt="TCP Flags">
+                </div>
+                <div>
+                    <h3>Packet Size Analysis</h3>
+                    <img src="size_analysis.png" alt="Packet Sizes">
+                </div>
+            </div>
+
+            <h2>Security Alerts</h2>
+            
+            <div class="alert">
+                <h3>Alert Details</h3>
+                <p><b>IP:</b> 184.107.43.74</p>
+                <p class="threat-level">Pattern: Port Enumeration | Suspicious SYN Activity</p>
+                <div class="metrics">
+                    <p>Packets: 81</p>
+                    <p>Avg Size: 120.0 bytes</p>
+                    <p>SYN Count: 81</p>
+                    <p>Port Count: 81</p>
+                </div>
+            </div>
+            
+        </body>
+        </html>
+        
